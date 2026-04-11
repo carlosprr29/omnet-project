@@ -1,0 +1,21 @@
+SB ov 1539 ev 2 rid General-0-20260403-20:30:58-3817
+
+E # 0 t 0 m 1 ce -1 msg -1
+MC id 1 c omnetpp::cModule t TwoQueues n TwoQueues cm 1
+MDC id 1 d bgb=373,202
+MC id 2 c queueing::Source t org.omnetpp.queueing.Source pid 1 n source1
+GC m 2 g 1 n out o 1
+MDC id 2 d p=28,35;i=block/source
+MC id 3 c queueing::Source t org.omnetpp.queueing.Source pid 1 n source2
+GC m 3 g 1 n out o 1
+MDC id 3 d p=28,139;i=block/source
+MC id 4 c queueing::Queue t org.omnetpp.queueing.Queue pid 1 n queue2
+GC m 4 g 3 n out o 1
+MDC id 4 d p=110,139;i=block/activeq;q=queue
+MC id 5 c queueing::Queue t org.omnetpp.queueing.Queue pid 1 n queue1
+GC m 5 g 3 n out o 1
+MDC id 5 d p=110,35;i=block/activeq;q=queue
+MC id 6 c queueing::Server t org.omnetpp.queueing.Server pid 1 n server2
+GC m 6 g 3 n out o 1
+
+SE e 0 c -1 m ""

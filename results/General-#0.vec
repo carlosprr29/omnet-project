@@ -1,0 +1,42 @@
+version 3
+run General-0-20260403-17:42:24-3817
+attr configname General
+attr datetime 20260403-17:42:24
+attr datetimef 20260403-174224
+attr experiment General
+attr inifile TwoQueues.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TwoQueues
+attr processid 3817
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network TwoQueues
+config record-eventlog true
+config sim-time-limit 100s
+config **.source1.interArrivalTime uniform(2s,8s)
+config **.source2.interArrivalTime uniform(2s,8s)
+config **.queue2.serviceTime exponential(1s)
+config **.queue1.serviceTime exponential(1s)
+
+vector 0 TwoQueues.queue2 queueLength:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 1 TwoQueues.queue1 queueLength:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 2 TwoQueues.sink lifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "lifetime of arrived jobs"
+attr unit s
+0	0	0	0
+1	0	0	0
+
