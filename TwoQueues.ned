@@ -24,10 +24,11 @@ import src.Source;
 network TwoQueues
 {
     @display("bgb=373,202");
+
     submodules:
         serverWithMaintenance: ServerWithMaintenance {
             @display("p=243,139");
-         }
+        }
         source2: Source {
             @display("p=29,139");
         }
@@ -49,8 +50,15 @@ network TwoQueues
     connections:
         source1.out --> IdealChannel --> queue1.in;
         queue1.out --> IdealChannel --> server.in;
+        server.out_queue --> IdealChannel --> queue1.from_srv; // 👈 CONEXIÓN PULL
+        server.out --> IdealChannel --> sink.in++;
+
         source2.out --> IdealChannel --> queue2.in;
         queue2.out --> IdealChannel --> serverWithMaintenance.in;
-        server.out --> IdealChannel --> sink.in++;
-        serverWithMaintenance.out --> IdealChannel --> sink.in++;
+        serverWithMaintenance.out_queue --> IdealChannel --> queue2.from_srv;
+		serverWithMaintenance.out --> IdealChannel --> sink.in++;
+        
+        
+
+
 }

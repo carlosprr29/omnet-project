@@ -10,16 +10,16 @@ using namespace omnetpp;
 
 class Source : public cSimpleModule {
   private:
-    cMessage *msg;
-    double p; // para geométrica
-    double q; // para Poisson
-    bool isGeometric; // para distinguir source1 y source2
+    cMessage *generateEvent;
+
+    double p; // geométrica
+    double q; // poisson
+    bool isGeometric;
 
   protected:
     virtual void initialize() override {
-        msg = new cMessage("generate");
+        generateEvent = new cMessage("generate");
 
-        // Detectar qué source es
         if (strcmp(getName(), "source1") == 0) {
             isGeometric = true;
             p = par("p");
@@ -28,26 +28,41 @@ class Source : public cSimpleModule {
             q = par("q");
         }
 
-        scheduleAt(simTime(), msg);
+        // empezar en t=0
+        scheduleAt(simTime(), generateEvent);
     }
 
     virtual void handleMessage(cMessage *msg) override {
-        // Enviar paquete
-        cMessage *job = new cMessage("job");
-        send(job, "out");
 
-        simtime_t interArrival;
+        int numArrivals = 0;
 
         if (isGeometric) {
-            // Geométrica (en tiempo discreto)
-            int k = geometric(p);  // número de slots
-            interArrival = k;      // 1 slot por unidad
+            // número de llegadas en el slot
+            numArrivals = geometric(p);
         } else {
-            // Poisson → exponencial en tiempo continuo
-            interArrival = exponential(1.0 / q);
+            // número de llegadas en el slot
+            numArrivals = poisson(q);
         }
 
-        scheduleAt(simTime() + interArrival, msg);
+        // generar esos usuarios
+        for (int i = 0; i < numArrivals; i++) {
+            cMessage *job = new cMessage("job");
+
+            // marcar clase
+            if (isGeometric)
+                job->setKind(1); // clase 1
+            else
+                job->setKind(2); // clase 2
+
+            send(job, "out");
+        }
+
+        // siguiente slot
+        scheduleAt(simTime() + 1, generateEvent);
+    }
+
+    virtual void finish() override {
+        cancelAndDelete(generateEvent);
     }
 };
 

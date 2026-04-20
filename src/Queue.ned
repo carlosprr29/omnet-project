@@ -19,5 +19,6 @@ simple Queue
     @display("i=block/boundedqueue");
     gates:
         input in;
+        input from_srv;     // 👈 NUEVO: Viene del Server (señal pull)
         output out;
 }

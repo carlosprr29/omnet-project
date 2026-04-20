@@ -1,0 +1,71 @@
+version 3
+run Experimentos-0-20260420-17:07:39-6866
+attr configname Experimentos
+attr datetime 20260420-17:07:39
+attr datetimef 20260420-170739
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr iterationvarsd p=0.6/q=0.2/Y=10/m=2
+attr iterationvarsf p=0.6,q=0.2,Y=10,m=2-
+attr measurement "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr network TwoQueues
+attr processid 6866
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar Y 10
+itervar m 2
+itervar p 0.6
+itervar q 0.2
+config description "Barrido de parametros"
+config **.source1.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config repeat 20
+config network TwoQueues
+config cpu-time-limit 1000s
+config real-time-limit 1000s
+config sim-time-limit 1000s
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config output-scalar-file results.sca
+config output-vector-file results.vec
+config **.delay1.vector-recording true
+config **.delay2.vector-recording true
+config **.throughput1.vector-recording true
+config **.throughput2.vector-recording true
+config **.queue1.qlen.vector-recording true
+config **.queue2.qlen.vector-recording true
+
+par TwoQueues.source1.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.queue1.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.server.out_queue.channel typename "\"ned.IdealChannel\""
+par TwoQueues.server.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.source2.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.queue2.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance.out_queue.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance typename "\"src.ServerWithMaintenance\""
+par TwoQueues.serverWithMaintenance Y 10
+par TwoQueues.serverWithMaintenance m 2
+par TwoQueues.source2 typename "\"src.Source\""
+par TwoQueues.source2 p 0.6
+par TwoQueues.source2 q 0.2
+par TwoQueues.source1 typename "\"src.Source\""
+par TwoQueues.source1 p 0.6
+par TwoQueues.source1 q 0.2
+par TwoQueues.queue2 typename "\"src.Queue\""
+par TwoQueues.queue1 typename "\"src.Queue\""
+par TwoQueues.server typename "\"src.Server\""
+par TwoQueues.sink typename "\"src.Sink\""
+scalar TwoQueues.sink "Paquetes totales recibidos" 904
+par TwoQueues typename "\"TwoQueues\""
+

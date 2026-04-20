@@ -23,4 +23,5 @@ simple ServerWithMaintenance
     gates:
         input in;
         output out;
+        output out_queue;   // 👈 NUEVO: Envía la señal "puedes_enviar" a la cola
 }

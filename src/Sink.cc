@@ -12,10 +12,12 @@ class Sink : public cSimpleModule
 {
   private:
     int numReceived = 0;
+    simsignal_t totalDelaySignal; // Para ver la evolución en el tiempo
 
   protected:
     virtual void initialize() override {
         numReceived = 0;
+        totalDelaySignal = registerSignal("totalDelay");
     }
 
     virtual void handleMessage(cMessage *msg) override {
@@ -23,13 +25,18 @@ class Sink : public cSimpleModule
 
         // Aquí puedes medir métricas (opcional)
         simtime_t delay = simTime() - msg->getCreationTime();
-        recordScalar("delay", delay);
+
+        // 2. Emitir señal (Mejor que recordScalar dentro de handleMessage)
+        emit(totalDelaySignal, delay);
+
+        // 3. LOG para depuración (Opcional, ver en consola)
+        EV << "Paquete recibido. Delay: " << delay << "s. Total: " << numReceived << endl;
 
         delete msg;
     }
 
     virtual void finish() override {
-        recordScalar("Paquetes recibidos", numReceived);
+        recordScalar("Paquetes totales recibidos", numReceived);
     }
 };
 

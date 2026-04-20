@@ -21,4 +21,5 @@ simple Server
     gates:
         input in;
         output out;
+        output out_queue;  // 👈 NUEVO: Necesario para el mensaje "puedes_enviar"
 }
