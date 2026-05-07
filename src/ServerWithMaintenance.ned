@@ -20,6 +20,16 @@ simple ServerWithMaintenance
         int Y;
         int m;
         @display("i=block/server");
+        
+        // --- SEÑALES Y ESTADÍSTICAS ---
+        // Necesarias para obtener el Residence Time e intervalos de confianza [cite: 32]
+        @signal[delay2](type="simtime_t");
+        @statistic[residenceTime2](title="Residence Time Class 2"; source="delay2"; record=mean, vector);
+
+        // Necesarias para obtener el Throughput e intervalos de confianza [cite: 33]
+        @signal[throughput2](type="long");
+        @statistic[throughputStats2](title="Throughput Class 2"; source="throughput2"; record=mean, vector);
+    
     gates:
         input in;
         output out;

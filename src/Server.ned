@@ -16,7 +16,14 @@
 package src;
 simple Server 
 {
-    @display("i=block/server");
+    
+    parameters:
+    	@display("i=block/server");
+        @signal[delay1](type="simtime_t");
+        @statistic[residenceTime1](title="Residence Time Class 1"; source="delay1"; record=mean, vector);
+        
+        @signal[throughput1](type="long");
+        @statistic[throughputStats1](title="Throughput Class 1"; source="throughput1"; record=mean, vector);
     
     gates:
         input in;

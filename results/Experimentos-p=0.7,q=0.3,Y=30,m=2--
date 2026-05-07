@@ -1,30 +1,30 @@
 version 3
-run Experimentos-959-20260421-18:34:24-13560
+run Experimentos-899-20260507-13:05:18-19243
 attr configname Experimentos
-attr datetime 20260421-18:34:24
-attr datetimef 20260421-183424
+attr datetime 20260507-13:05:18
+attr datetimef 20260507-130518
 attr experiment Experimentos
 attr inifile TwoQueues.ini
-attr iterationvars "$p=0.7, $q=0.3, $Y=30, $m=5"
-attr iterationvarsd p=0.7/q=0.3/Y=30/m=5
-attr iterationvarsf p=0.7,q=0.3,Y=30,m=5-
-attr measurement "$p=0.7, $q=0.3, $Y=30, $m=5"
+attr iterationvars "$p=0.7, $q=0.3, $Y=30, $m=2"
+attr iterationvarsd p=0.7/q=0.3/Y=30/m=2
+attr iterationvarsf p=0.7,q=0.3,Y=30,m=2-
+attr measurement "$p=0.7, $q=0.3, $Y=30, $m=2"
 attr network TwoQueues
-attr processid 13560
+attr processid 19243
 attr repetition 19
 attr replication #19
 attr resultdir results
-attr runnumber 959
-attr seedset 959
+attr runnumber 899
+attr seedset 899
 itervar Y 30
-itervar m 5
+itervar m 2
 itervar p 0.7
 itervar q 0.3
 config description "Barrido de parametros"
 config **.source1.p 0.7
 config **.source2.q 0.3
 config **.serverWithMaintenance.Y 30
-config **.serverWithMaintenance.m 5
+config **.serverWithMaintenance.m 2
 config network TwoQueues
 config cpu-time-limit 5000s
 config real-time-limit 5000s
@@ -37,8 +37,8 @@ config **.source2.p 0.6
 config **.source2.q 0.2
 config **.serverWithMaintenance.Y 10
 config **.serverWithMaintenance.m 2
-config output-scalar-file results.sca
-config output-vector-file results.vec
+config output-scalar-file results/Experimentos-p=0.7,q=0.3,Y=30,m=2--
+config output-vector-file results/Experimentos-p=0.7,q=0.3,Y=30,m=2--
 config **.delay1.vector-recording true
 config **.delay2.vector-recording true
 config **.throughput1.vector-recording true
@@ -56,12 +56,12 @@ par TwoQueues.serverWithMaintenance.out_queue.channel typename "\"ned.IdealChann
 par TwoQueues.serverWithMaintenance.out.channel typename "\"ned.IdealChannel\""
 par TwoQueues.serverWithMaintenance typename "\"src.ServerWithMaintenance\""
 par TwoQueues.serverWithMaintenance Y 30
-par TwoQueues.serverWithMaintenance m 5
-scalar TwoQueues.serverWithMaintenance throughputStats2:mean -nan
+par TwoQueues.serverWithMaintenance m 2
+scalar TwoQueues.serverWithMaintenance throughputStats2:mean 1
 attr recordingmode mean
 attr source throughput2
 attr title "Throughput Class 2, mean"
-scalar TwoQueues.serverWithMaintenance residenceTime2:mean -nan
+scalar TwoQueues.serverWithMaintenance residenceTime2:mean 1.2691197691198
 attr recordingmode mean
 attr source delay2
 attr title "Residence Time Class 2, mean"
@@ -72,12 +72,12 @@ par TwoQueues.source1 typename "\"src.Source\""
 par TwoQueues.source1 p 0.7
 par TwoQueues.source1 q 0.2
 par TwoQueues.queue2 typename "\"src.Queue\""
-scalar TwoQueues.queue2 queueLengthStats:timeavg 0.14705242549489
+scalar TwoQueues.queue2 queueLengthStats:timeavg 0.081139873830759
 attr recordingmode timeavg
 attr source qlen
 attr title "Average Queue Length, timeavg"
 par TwoQueues.queue1 typename "\"src.Queue\""
-scalar TwoQueues.queue1 queueLengthStats:timeavg 0.31847826086957
+scalar TwoQueues.queue1 queueLengthStats:timeavg 0.33173913043478
 attr recordingmode timeavg
 attr source qlen
 attr title "Average Queue Length, timeavg"
@@ -86,11 +86,11 @@ scalar TwoQueues.server throughputStats1:mean 1
 attr recordingmode mean
 attr source throughput1
 attr title "Throughput Class 1, mean"
-scalar TwoQueues.server residenceTime1:mean 1.7405350832913
+scalar TwoQueues.server residenceTime1:mean 1.7826755509995
 attr recordingmode mean
 attr source delay1
 attr title "Residence Time Class 1, mean"
 par TwoQueues.sink typename "\"src.Sink\""
-scalar TwoQueues.sink "Paquetes totales recibidos" 3623
+scalar TwoQueues.sink "Paquetes totales recibidos" 3653
 par TwoQueues typename "\"TwoQueues\""
 

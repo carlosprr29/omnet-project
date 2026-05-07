@@ -16,7 +16,11 @@
 package src;
 simple Queue
 {
-    @display("i=block/boundedqueue");
+    parameters:
+    	@display("i=block/boundedqueue");
+        @signal[qlen](type="long");
+        @statistic[queueLengthStats](title="Average Queue Length"; source="qlen"; record=timeavg, vector);
+    
     gates:
         input in;
         input from_srv;     // 👈 NUEVO: Viene del Server (señal pull)

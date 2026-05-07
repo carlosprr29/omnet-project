@@ -20,6 +20,10 @@ class ServerWithMaintenance : public cSimpleModule {
     cMessage *endMaintenance;
     cMessage *currentJob;
 
+    // --- SEÑALES PARA ESTADÍSTICAS ---
+    simsignal_t delaySignal2;
+    simsignal_t throughputSignal2;
+
   protected:
     virtual void initialize() override {
         Y = par("Y");
@@ -33,6 +37,10 @@ class ServerWithMaintenance : public cSimpleModule {
         endService = new cMessage("endService");
         endMaintenance = new cMessage("endMaintenance");
 
+        // Registrar señales (deben coincidir con el nombre en el .ned)
+        delaySignal2 = registerSignal("delay2");
+        throughputSignal2 = registerSignal("throughput2");
+
         // Avisar a la cola al arrancar que estamos listos
         send(new cMessage("puedes_enviar"), "out_queue");
     }
@@ -40,6 +48,11 @@ class ServerWithMaintenance : public cSimpleModule {
     virtual void handleMessage(cMessage *msg) override {
         // 1. FIN DE SERVICIO
         if (msg == endService) {
+            // 1. CALCULAR ESTADÍSTICAS ANTES DE ENVIAR
+            simtime_t delay = simTime() - currentJob->getCreationTime();
+            emit(delaySignal2, delay);         // Para Residence Time
+            emit(throughputSignal2, 1L);      // Para Throughput
+
             send(currentJob, "out");
             currentJob = nullptr;
             busy = false;
