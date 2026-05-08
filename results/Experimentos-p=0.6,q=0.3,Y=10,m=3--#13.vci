@@ -1,0 +1,65 @@
+file 238822 1778263549                                          
+version 3
+run Experimentos-273-20260508-20:05:49-29200
+attr configname Experimentos
+attr datetime 20260508-20:05:49
+attr datetimef 20260508-200549
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.3, $Y=10, $m=3"
+attr iterationvarsd p=0.6/q=0.3/Y=10/m=3
+attr iterationvarsf p=0.6,q=0.3,Y=10,m=3-
+attr measurement "$p=0.6, $q=0.3, $Y=10, $m=3"
+attr network TwoQueues
+attr processid 29200
+attr repetition 13
+attr replication #13
+attr resultdir results
+attr runnumber 273
+attr seedset 273
+itervar Y 10
+itervar m 3
+itervar p 0.6
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 3
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.3,Y=10,m=3--#13.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.3,Y=10,m=3--#13.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1802 19841 2528 33793 401 4998 1357 1 7 2028 4376
+1	21643 39710 2520 33800 400 5000 2716 0 5 1878 2774
+2	61353 88749 2521 33779 400 4996 6064 0 14 13612 62204
+3	150102 44390 2529 33785 401 4997 3032 1 14 8698 39494
+4	194492 44329 2529 33785 401 4997 3032 1 1 3032 3032
+

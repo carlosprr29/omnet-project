@@ -1,0 +1,65 @@
+file 151779 1778263571                                          
+version 3
+run Experimentos-683-20260508-20:06:11-31253
+attr configname Experimentos
+attr datetime 20260508-20:06:11
+attr datetimef 20260508-200611
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.2, $Y=30, $m=4"
+attr iterationvarsd p=0.7/q=0.2/Y=30/m=4
+attr iterationvarsf p=0.7,q=0.2,Y=30,m=4-
+attr measurement "$p=0.7, $q=0.2, $Y=30, $m=4"
+attr network TwoQueues
+attr processid 31253
+attr repetition 3
+attr replication #3
+attr resultdir results
+attr runnumber 683
+attr seedset 683
+itervar Y 30
+itervar m 4
+itervar p 0.7
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 30
+config **.serverWithMaintenance.m 4
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.2,Y=30,m=4--#3.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.2,Y=30,m=4--#3.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1798 13124 2151 25387 402 4996 905 1 7 1119 1935
+1	14922 26278 2144 25398 401 5000 1812 0 3 1006 1130
+2	41200 55262 2139 25376 400 4994 3800 0 7 3772 8052
+3	96462 27658 2137 25380 400 4995 1902 1 7 3181 7233
+4	124120 27658 2137 25380 400 4995 1902 1 1 1902 1902
+

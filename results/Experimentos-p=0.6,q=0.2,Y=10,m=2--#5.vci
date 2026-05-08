@@ -1,0 +1,65 @@
+file 224151 1778263535                                          
+version 3
+run Experimentos-5-20260508-20:05:35-27859
+attr configname Experimentos
+attr datetime 20260508-20:05:35
+attr datetimef 20260508-200535
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr iterationvarsd p=0.6/q=0.2/Y=10/m=2
+attr iterationvarsf p=0.6,q=0.2,Y=10,m=2-
+attr measurement "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr network TwoQueues
+attr processid 27859
+attr repetition 5
+attr replication #5
+attr resultdir results
+attr runnumber 5
+attr seedset 5
+itervar Y 10
+itervar m 2
+itervar p 0.6
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.2,Y=10,m=2--#5.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.2,Y=10,m=2--#5.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1792 12768 2557 31883 405 4998 875 1 5 1068 1592
+1	14560 25534 2551 31877 404 4997 1750 0 4 985 1135
+2	40094 92079 2528 31902 400 5000 6288 0 17 14550 71332
+3	132173 46022 2533 31898 401 5000 3142 1 17 9243 44675
+4	178195 45955 2533 31898 401 5000 3142 1 1 3142 3142
+

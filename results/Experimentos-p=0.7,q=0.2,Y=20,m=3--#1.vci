@@ -1,0 +1,65 @@
+file 151517 1778263565                                          
+version 3
+run Experimentos-581-20260508-20:06:05-30743
+attr configname Experimentos
+attr datetime 20260508-20:06:05
+attr datetimef 20260508-200605
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.2, $Y=20, $m=3"
+attr iterationvarsd p=0.7/q=0.2/Y=20/m=3
+attr iterationvarsf p=0.7,q=0.2,Y=20,m=3-
+attr measurement "$p=0.7, $q=0.2, $Y=20, $m=3"
+attr network TwoQueues
+attr processid 30743
+attr repetition 1
+attr replication #1
+attr resultdir results
+attr runnumber 581
+attr seedset 581
+itervar Y 20
+itervar m 3
+itervar p 0.7
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 20
+config **.serverWithMaintenance.m 3
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.2,Y=20,m=3--#1.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.2,Y=20,m=3--#1.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1798 13567 2094 25342 401 4994 932 1 6 1135 1769
+1	15365 27134 2087 25336 400 4993 1864 0 4 1068 1248
+2	42499 54491 2089 25350 400 4995 3747 0 14 3989 11041
+3	96990 27267 2086 25354 400 4996 1875 1 14 3230 8636
+4	124257 27259 2086 25354 400 4996 1875 1 1 1875 1875
+

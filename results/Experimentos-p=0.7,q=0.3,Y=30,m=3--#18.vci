@@ -1,0 +1,65 @@
+file 173704 1778263583                                          
+version 3
+run Experimentos-918-20260508-20:06:23-32428
+attr configname Experimentos
+attr datetime 20260508-20:06:23
+attr datetimef 20260508-200623
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.3, $Y=30, $m=3"
+attr iterationvarsd p=0.7/q=0.3/Y=30/m=3
+attr iterationvarsf p=0.7,q=0.3,Y=30,m=3-
+attr measurement "$p=0.7, $q=0.3, $Y=30, $m=3"
+attr network TwoQueues
+attr processid 32428
+attr repetition 18
+attr replication #18
+attr resultdir results
+attr runnumber 918
+attr seedset 918
+itervar Y 30
+itervar m 3
+itervar p 0.7
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 30
+config **.serverWithMaintenance.m 3
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.3,Y=30,m=3--#18.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.3,Y=30,m=3--#18.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1802 19877 2285 27945 403 4998 1366 1 6 1772 2946
+1	21679 39752 2277 27938 402 4997 2732 0 4 1718 2214
+2	61431 56124 2263 27964 400 5000 3850 0 7 4013 9281
+3	117555 28074 2262 27961 400 5000 1926 1 7 3327 8041
+4	145629 28074 2262 27961 400 5000 1926 1 1 1926 1926
+

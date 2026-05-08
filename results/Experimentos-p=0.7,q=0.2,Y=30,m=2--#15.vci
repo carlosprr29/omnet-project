@@ -1,0 +1,65 @@
+file 154455 1778263569                                          
+version 3
+run Experimentos-655-20260508-20:06:09-31113
+attr configname Experimentos
+attr datetime 20260508-20:06:09
+attr datetimef 20260508-200609
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.2, $Y=30, $m=2"
+attr iterationvarsd p=0.7/q=0.2/Y=30/m=2
+attr iterationvarsf p=0.7,q=0.2,Y=30,m=2-
+attr measurement "$p=0.7, $q=0.2, $Y=30, $m=2"
+attr network TwoQueues
+attr processid 31113
+attr repetition 15
+attr replication #15
+attr resultdir results
+attr runnumber 655
+attr seedset 655
+itervar Y 30
+itervar m 2
+itervar p 0.7
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 30
+config **.serverWithMaintenance.m 2
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.2,Y=30,m=2--#15.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.2,Y=30,m=2--#15.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1802 13002 2049 25493 402 4997 897 1 3 1025 1307
+1	14804 26002 2044 25489 401 4996 1794 0 3 981 1085
+2	40806 56823 2063 25505 404 4999 3902 0 10 4291 10963
+3	97629 28413 2070 25509 405 5000 1951 1 10 3420 8716
+4	126042 28412 2070 25509 405 5000 1951 1 1 1951 1951
+

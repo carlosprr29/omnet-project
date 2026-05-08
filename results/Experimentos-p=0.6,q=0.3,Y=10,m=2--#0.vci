@@ -1,0 +1,65 @@
+file 241257 1778263548                                          
+version 3
+run Experimentos-240-20260508-20:05:48-29035
+attr configname Experimentos
+attr datetime 20260508-20:05:48
+attr datetimef 20260508-200548
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.3, $Y=10, $m=2"
+attr iterationvarsd p=0.6/q=0.3/Y=10/m=2
+attr iterationvarsf p=0.6,q=0.3,Y=10,m=2-
+attr measurement "$p=0.6, $q=0.3, $Y=10, $m=2"
+attr network TwoQueues
+attr processid 29035
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 240
+attr seedset 240
+itervar Y 10
+itervar m 2
+itervar p 0.6
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.3,Y=10,m=2--#0.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.3,Y=10,m=2--#0.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1798 20998 2992 34515 404 4998 1435 1 5 2012 3728
+1	22796 41992 2988 34508 403 4997 2870 0 4 1911 2599
+2	64788 88258 3001 34532 406 5000 6015 0 18 13796 67788
+3	153046 44133 2979 34530 400 5000 3007 1 18 8812 42606
+4	197179 44077 2979 34530 400 5000 3007 1 1 3007 3007
+

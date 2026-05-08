@@ -1,0 +1,65 @@
+file 229890 1778263535                                          
+version 3
+run Experimentos-6-20260508-20:05:35-27863
+attr configname Experimentos
+attr datetime 20260508-20:05:35
+attr datetimef 20260508-200535
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr iterationvarsd p=0.6/q=0.2/Y=10/m=2
+attr iterationvarsf p=0.6,q=0.2,Y=10,m=2-
+attr measurement "$p=0.6, $q=0.2, $Y=10, $m=2"
+attr network TwoQueues
+attr processid 27863
+attr repetition 6
+attr replication #6
+attr resultdir results
+attr runnumber 6
+attr seedset 6
+itervar Y 10
+itervar m 2
+itervar p 0.6
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.2,Y=10,m=2--#6.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.2,Y=10,m=2--#6.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1792 14318 2554 32534 402 4998 980 1 5 1248 2022
+1	16110 28633 2548 32526 401 4997 1960 0 3 1134 1324
+2	44743 92623 2543 32554 400 5000 6329 0 17 15405 76145
+3	137366 46297 2547 32550 401 5000 3162 1 17 9632 47188
+4	183663 46226 2547 32550 401 5000 3162 1 1 3162 3162
+

@@ -28,7 +28,7 @@ simple ServerWithMaintenance
 
         // Necesarias para obtener el Throughput e intervalos de confianza [cite: 33]
         @signal[throughput2](type="long");
-        @statistic[throughputStats2](title="Throughput Class 2"; source="throughput2"; record=mean, vector);
+        @statistic[throughputStats2](title="Throughput Class 2"; source="throughput2"; record=mean, count);
     
     gates:
         input in;

@@ -1,0 +1,65 @@
+file 241078 1778263548                                          
+version 3
+run Experimentos-248-20260508-20:05:48-29075
+attr configname Experimentos
+attr datetime 20260508-20:05:48
+attr datetimef 20260508-200548
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.3, $Y=10, $m=2"
+attr iterationvarsd p=0.6/q=0.3/Y=10/m=2
+attr iterationvarsf p=0.6,q=0.3,Y=10,m=2-
+attr measurement "$p=0.6, $q=0.3, $Y=10, $m=2"
+attr network TwoQueues
+attr processid 29075
+attr repetition 8
+attr replication #8
+attr resultdir results
+attr runnumber 248
+attr seedset 248
+itervar Y 10
+itervar m 2
+itervar p 0.6
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 2
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.3,Y=10,m=2--#8.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.3,Y=10,m=2--#8.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1798 19479 2673 34079 400 4996 1331 1 6 1821 3275
+1	21277 38949 2675 34096 400 5000 2661 0 5 1732 2362
+2	60226 90451 2680 34100 401 5000 6179 0 13 13154 55066
+3	150677 45214 2686 34095 402 5000 3088 1 13 8563 36127
+4	195891 45186 2686 34095 402 5000 3088 1 1 3088 3088
+

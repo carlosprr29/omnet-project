@@ -1,0 +1,65 @@
+file 175796 1778263576                                          
+version 3
+run Experimentos-776-20260508-20:06:16-31718
+attr configname Experimentos
+attr datetime 20260508-20:06:16
+attr datetimef 20260508-200616
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.3, $Y=10, $m=4"
+attr iterationvarsd p=0.7/q=0.3/Y=10/m=4
+attr iterationvarsf p=0.7,q=0.3,Y=10,m=4-
+attr measurement "$p=0.7, $q=0.3, $Y=10, $m=4"
+attr network TwoQueues
+attr processid 31718
+attr repetition 16
+attr replication #16
+attr resultdir results
+attr runnumber 776
+attr seedset 776
+itervar Y 10
+itervar m 4
+itervar p 0.7
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 4
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.3,Y=10,m=4--#16.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.3,Y=10,m=4--#16.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1802 19542 2197 28096 409 5000 1342 1 8 2284 6340
+1	21344 39080 2189 28090 408 4999 2684 0 6 1976 3130
+2	60424 57682 2149 28097 400 5000 3963 0 11 4877 14929
+3	118106 28847 2148 28089 400 4999 1982 1 11 3772 11226
+4	146953 28842 2148 28089 400 4999 1982 1 1 1982 1982
+

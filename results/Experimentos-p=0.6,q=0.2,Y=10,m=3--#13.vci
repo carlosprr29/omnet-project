@@ -1,0 +1,65 @@
+file 223567 1778263537                                          
+version 3
+run Experimentos-33-20260508-20:05:37-28000
+attr configname Experimentos
+attr datetime 20260508-20:05:37
+attr datetimef 20260508-200537
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.2, $Y=10, $m=3"
+attr iterationvarsd p=0.6/q=0.2/Y=10/m=3
+attr iterationvarsf p=0.6,q=0.2,Y=10,m=3-
+attr measurement "$p=0.6, $q=0.2, $Y=10, $m=3"
+attr network TwoQueues
+attr processid 28000
+attr repetition 13
+attr replication #13
+attr resultdir results
+attr runnumber 33
+attr seedset 33
+itervar Y 10
+itervar m 3
+itervar p 0.6
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 3
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.2,Y=10,m=3--#13.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.2,Y=10,m=3--#13.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1799 12368 2690 31951 403 5000 846 1 6 1061 1795
+1	14167 24734 2681 31945 402 4999 1692 0 4 932 1042
+2	38901 92376 2669 31953 400 5000 6310 0 16 16519 92479
+3	131277 46209 2667 31944 400 4999 3155 1 16 10236 56304
+4	177486 46080 2667 31944 400 4999 3155 1 1 3155 3155
+

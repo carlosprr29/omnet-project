@@ -1,0 +1,90 @@
+version 3
+run Experimentos-425-20260508-20:05:57-29963
+attr configname Experimentos
+attr datetime 20260508-20:05:57
+attr datetimef 20260508-200557
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.6, $q=0.3, $Y=30, $m=3"
+attr iterationvarsd p=0.6/q=0.3/Y=30/m=3
+attr iterationvarsf p=0.6,q=0.3,Y=30,m=3-
+attr measurement "$p=0.6, $q=0.3, $Y=30, $m=3"
+attr network TwoQueues
+attr processid 29963
+attr repetition 5
+attr replication #5
+attr resultdir results
+attr runnumber 425
+attr seedset 425
+itervar Y 30
+itervar m 3
+itervar p 0.6
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.6
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 30
+config **.serverWithMaintenance.m 3
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.6,q=0.3,Y=30,m=3--#5.sca
+config output-vector-file results/Experimentos-p=0.6,q=0.3,Y=30,m=3--#5.vec
+config **.vector-recording true
+
+par TwoQueues.source1.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.queue1.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.server.out_queue.channel typename "\"ned.IdealChannel\""
+par TwoQueues.server.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.source2.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.queue2.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance.out_queue.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance.out.channel typename "\"ned.IdealChannel\""
+par TwoQueues.serverWithMaintenance typename "\"src.ServerWithMaintenance\""
+par TwoQueues.serverWithMaintenance Y 30
+par TwoQueues.serverWithMaintenance m 3
+scalar TwoQueues.serverWithMaintenance throughputStats2:mean 1
+attr recordingmode mean
+attr source throughput2
+attr title "Throughput Class 2, mean"
+scalar TwoQueues.serverWithMaintenance throughputStats2:count 1357
+attr recordingmode count
+attr source throughput2
+attr title "Throughput Class 2, count"
+scalar TwoQueues.serverWithMaintenance residenceTime2:mean 1.2652910832719
+attr recordingmode mean
+attr source delay2
+attr title "Residence Time Class 2, mean"
+par TwoQueues.source2 typename "\"src.Source\""
+par TwoQueues.source2 p 0.6
+par TwoQueues.source2 q 0.3
+par TwoQueues.source1 typename "\"src.Source\""
+par TwoQueues.source1 p 0.6
+par TwoQueues.source1 q 0.2
+par TwoQueues.queue2 typename "\"src.Queue\""
+scalar TwoQueues.queue2 queueLengthStats:timeavg 0.078414288825964
+attr recordingmode timeavg
+attr source qlen
+attr title "Average Queue Length, timeavg"
+par TwoQueues.queue1 typename "\"src.Queue\""
+scalar TwoQueues.queue1 queueLengthStats:timeavg 1.6421739130435
+attr recordingmode timeavg
+attr source qlen
+attr title "Average Queue Length, timeavg"
+par TwoQueues.server typename "\"src.Server\""
+scalar TwoQueues.server throughputStats1:mean 1
+attr recordingmode mean
+attr source throughput1
+attr title "Throughput Class 1, mean"
+scalar TwoQueues.server residenceTime1:mean 3.3868013893274
+attr recordingmode mean
+attr source delay1
+attr title "Residence Time Class 1, mean"
+par TwoQueues.sink typename "\"src.Sink\""
+scalar TwoQueues.sink "Paquetes totales recibidos" 4936
+par TwoQueues typename "\"TwoQueues\""
+

@@ -1,0 +1,65 @@
+file 178138 1778263584                                          
+version 3
+run Experimentos-942-20260508-20:06:24-32548
+attr configname Experimentos
+attr datetime 20260508-20:06:24
+attr datetimef 20260508-200624
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.3, $Y=30, $m=5"
+attr iterationvarsd p=0.7/q=0.3/Y=30/m=5
+attr iterationvarsf p=0.7,q=0.3,Y=30,m=5-
+attr measurement "$p=0.7, $q=0.3, $Y=30, $m=5"
+attr network TwoQueues
+attr processid 32548
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 942
+attr seedset 942
+itervar Y 30
+itervar m 5
+itervar p 0.7
+itervar q 0.3
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.3
+config **.serverWithMaintenance.Y 30
+config **.serverWithMaintenance.m 5
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.3,Y=30,m=5--#2.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.3,Y=30,m=5--#2.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1798 19963 2429 28507 400 5000 1371 1 9 2042 5098
+1	21761 39885 2432 28503 400 4999 2739 0 6 1891 2925
+2	61646 58231 2446 28489 402 4997 3992 0 8 4282 10128
+3	119877 29130 2430 28493 400 4998 1997 1 8 3510 8674
+4	149007 29130 2430 28493 400 4998 1997 1 1 1997 1997
+

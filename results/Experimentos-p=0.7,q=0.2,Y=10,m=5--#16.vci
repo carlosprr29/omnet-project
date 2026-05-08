@@ -1,0 +1,65 @@
+file 161804 1778263564                                          
+version 3
+run Experimentos-556-20260508-20:06:04-30618
+attr configname Experimentos
+attr datetime 20260508-20:06:04
+attr datetimef 20260508-200604
+attr experiment Experimentos
+attr inifile TwoQueues.ini
+attr iterationvars "$p=0.7, $q=0.2, $Y=10, $m=5"
+attr iterationvarsd p=0.7/q=0.2/Y=10/m=5
+attr iterationvarsf p=0.7,q=0.2,Y=10,m=5-
+attr measurement "$p=0.7, $q=0.2, $Y=10, $m=5"
+attr network TwoQueues
+attr processid 30618
+attr repetition 16
+attr replication #16
+attr resultdir results
+attr runnumber 556
+attr seedset 556
+itervar Y 10
+itervar m 5
+itervar p 0.7
+itervar q 0.2
+config description "Barrido completo de parámetros Proyecto 12"
+config **.source1.p 0.7
+config **.source1.q 0.2
+config **.source2.p 0.6
+config **.source2.q 0.2
+config **.serverWithMaintenance.Y 10
+config **.serverWithMaintenance.m 5
+config network TwoQueues
+config cpu-time-limit 5000s
+config sim-time-limit 5000s
+config warmup-period 400s
+config repeat 20
+config output-scalar-file results/Experimentos-p=0.7,q=0.2,Y=10,m=5--#16.sca
+config output-vector-file results/Experimentos-p=0.7,q=0.2,Y=10,m=5--#16.vec
+config **.vector-recording true
+
+vector 0 TwoQueues.serverWithMaintenance residenceTime2:vector ETV
+attr recordingmode vector
+attr source delay2
+attr title "Residence Time Class 2"
+vector 1 TwoQueues.queue2 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 2 TwoQueues.queue1 queueLengthStats:vector ETV
+attr recordingmode vector
+attr source qlen
+attr title "Average Queue Length"
+vector 3 TwoQueues.server residenceTime1:vector ETV
+attr recordingmode vector
+attr source delay1
+attr title "Residence Time Class 1"
+vector 4 TwoQueues.server throughputStats1:vector ETV
+attr recordingmode vector
+attr source throughput1
+attr title "Throughput Class 1"
+0	1802 13729 2187 26368 404 4997 943 1 8 1540 4476
+1	15531 27458 2179 26364 403 4996 1886 0 4 1227 1679
+2	42989 59420 2165 26376 401 5000 4084 0 8 4616 11450
+3	102409 29697 2169 26350 402 4994 2041 1 8 3691 9413
+4	132106 29697 2169 26350 402 4994 2041 1 1 2041 2041
+
