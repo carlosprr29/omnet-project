@@ -1,8 +1,8 @@
 version 3
-run Experimentos-212-20260508-20:05:46-28895
+run Experimentos-212-20260514-09:21:05-4484
 attr configname Experimentos
-attr datetime 20260508-20:05:46
-attr datetimef 20260508-200546
+attr datetime 20260514-09:21:05
+attr datetimef 20260514-092105
 attr experiment Experimentos
 attr inifile TwoQueues.ini
 attr iterationvars "$p=0.6, $q=0.2, $Y=30, $m=4"
@@ -10,7 +10,7 @@ attr iterationvarsd p=0.6/q=0.2/Y=30/m=4
 attr iterationvarsf p=0.6,q=0.2,Y=30,m=4-
 attr measurement "$p=0.6, $q=0.2, $Y=30, $m=4"
 attr network TwoQueues
-attr processid 28895
+attr processid 4484
 attr repetition 12
 attr replication #12
 attr resultdir results

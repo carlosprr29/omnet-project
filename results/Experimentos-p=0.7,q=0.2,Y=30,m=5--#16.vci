@@ -1,9 +1,9 @@
-file 156890 1778263572                                          
+file 156888 1778743292                                          
 version 3
-run Experimentos-716-20260508-20:06:12-31418
+run Experimentos-716-20260514-09:21:32-7007
 attr configname Experimentos
-attr datetime 20260508-20:06:12
-attr datetimef 20260508-200612
+attr datetime 20260514-09:21:32
+attr datetimef 20260514-092132
 attr experiment Experimentos
 attr inifile TwoQueues.ini
 attr iterationvars "$p=0.7, $q=0.2, $Y=30, $m=5"
@@ -11,7 +11,7 @@ attr iterationvarsd p=0.7/q=0.2/Y=30/m=5
 attr iterationvarsf p=0.7,q=0.2,Y=30,m=5-
 attr measurement "$p=0.7, $q=0.2, $Y=30, $m=5"
 attr network TwoQueues
-attr processid 31418
+attr processid 7007
 attr repetition 16
 attr replication #16
 attr resultdir results
@@ -57,9 +57,9 @@ vector 4 TwoQueues.server throughputStats1:vector ETV
 attr recordingmode vector
 attr source throughput1
 attr title "Throughput Class 1"
-0	1802 13347 2087 25775 404 5000 919 1 8 1163 2203
-1	15149 26724 2083 25779 403 5000 1840 0 3 1036 1188
-2	41873 57522 2074 25777 401 5000 3954 0 8 4343 10365
-3	99395 28747 2078 25768 402 4999 1976 1 8 3516 8742
-4	128142 28747 2078 25768 402 4999 1976 1 1 1976 1976
+0	1800 13347 2087 25775 404 5000 919 1 8 1163 2203
+1	15147 26724 2083 25779 403 5000 1840 0 3 1036 1188
+2	41871 57522 2074 25777 401 5000 3954 0 8 4343 10365
+3	99393 28747 2078 25768 402 4999 1976 1 8 3516 8742
+4	128140 28747 2078 25768 402 4999 1976 1 1 1976 1976
 
