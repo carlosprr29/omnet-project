@@ -15,7 +15,7 @@ class Server  : public cSimpleModule {
 
     cMessage *endServiceEvent;
     //cMessage *nextJobEvent;
-
+    int totalServices1;
     cMessage *currentJob;
     bool busy;
 
@@ -33,6 +33,7 @@ class Server  : public cSimpleModule {
         //nextJobEvent = new cMessage("nextJob");
         currentJob = nullptr;
         busy = false;
+        totalServices1 = 0;
         // 👇 registrar señal
         delaySignal1 = registerSignal("delay1");
         //delaySignal2 = registerSignal("delay2");
@@ -56,7 +57,8 @@ class Server  : public cSimpleModule {
             emit(delaySignal1, delay);
 
             // Emitir señal de Throughput [cite: 33]
-            emit(throughputSignal1, 1L);
+            totalServices1++;
+            emit(throughputSignal1, totalServices1);
 
             send(currentJob, "out");
             currentJob = nullptr;
