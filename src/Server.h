@@ -15,5 +15,7 @@ public:
     Server();
     virtual ~Server();
 };
+private:
+    long totalServices1; // Contador acumulativo
 
 #endif /* SRC_SERVER_H_ */
