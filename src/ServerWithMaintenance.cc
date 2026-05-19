@@ -11,6 +11,7 @@ using namespace omnetpp;
 class ServerWithMaintenance : public cSimpleModule {
   private:
     int serviceCounter;
+    int totalServices;
     int Y;
     int m;
     bool inMaintenance;
@@ -30,6 +31,7 @@ class ServerWithMaintenance : public cSimpleModule {
         m = par("m");
 
         serviceCounter = 0;
+        totalServices = 0;
         inMaintenance = false;
         busy = false;
         currentJob = nullptr;
@@ -43,6 +45,8 @@ class ServerWithMaintenance : public cSimpleModule {
 
         // Avisar a la cola al arrancar que estamos listos
         send(new cMessage("puedes_enviar"), "out_queue");
+        //cMessage *avisoInicial = new cMessage("puedes_enviar");
+        //scheduleAt(simTime(), avisoInicial);
     }
 
     virtual void handleMessage(cMessage *msg) override {
@@ -51,7 +55,8 @@ class ServerWithMaintenance : public cSimpleModule {
             // 1. CALCULAR ESTADÍSTICAS ANTES DE ENVIAR
             simtime_t delay = simTime() - currentJob->getCreationTime();
             emit(delaySignal2, delay);         // Para Residence Time
-            emit(throughputSignal2, 1L);      // Para Throughput
+            totalServices++;
+            emit(throughputSignal2, totalServices); // <--- Emitimos el total acumulado
 
             send(currentJob, "out");
             currentJob = nullptr;
@@ -91,6 +96,18 @@ class ServerWithMaintenance : public cSimpleModule {
     }
 
     virtual void finish() override {
+        // --- CÁLCULO DEL THROUGHPUT REAL ---
+        // Tiempo total de simulación menos el periodo de warmup
+        simtime_t totalSimulationTime = simTime() - getSimulation()->getWarmupPeriod();
+
+        if (totalSimulationTime > 0) {
+              // Paquetes totales / Tsbiempo total útil de simulación
+              double throughputReal = (double)totalServices / totalSimulationTime.dbl();
+
+              // Esto guarda directamente el valor final en tu archivo .sca sin promediar unos
+              recordScalar("throughput2", throughputReal);
+        }
+
         cancelAndDelete(endService);
         cancelAndDelete(endMaintenance);
         if (currentJob) delete currentJob;
